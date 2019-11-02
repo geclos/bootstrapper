@@ -1,0 +1,5 @@
+.title {
+  @apply text-2xl;
+  @apply leading-none;
+  font-weight: bold;
+}

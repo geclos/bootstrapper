@@ -1,0 +1,10 @@
+.article {
+  @apply mx-auto;
+  @apply mt-12;
+
+  max-width: 35em;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
