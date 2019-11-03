@@ -1,10 +1,13 @@
 import React from 'react'
+import cn from 'classnames/bind'
 
 import styles from './index.module.css'
 
-function Title({ children }) {
+const cx = cn.bind(styles)
+
+function Title({ children, size = '2xl' }) {
   return (
-    <div className={styles.title}>
+    <div className={cx('title', size)}>
       { children }
     </div>
   );

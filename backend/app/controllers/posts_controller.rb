@@ -7,8 +7,9 @@ class PostsController < ApplicationController
 
     items = open(url) do |rss|
       feed = RSS::Parser.parse(rss)
-      feed.items.map do |item|
+      feed.items.each_with_index.map do |item, i|
         {
+          id: i,
           title: item.title,
           content: item.content_encoded,
           description: item.description,

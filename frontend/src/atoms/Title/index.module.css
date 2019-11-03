@@ -1,5 +1,12 @@
 .title {
-  @apply text-2xl;
-  @apply leading-none;
+  @apply leading-tight;
   font-weight: bold;
+}
+
+.title.2xl {
+  @apply text-2xl;
+}
+
+.title.xl {
+  @apply text-xl;
 }

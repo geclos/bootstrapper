@@ -1,5 +1,4 @@
 .root {
-  @apply mt-2;
   @apply leading-none;
   @apply text-sm;
 
