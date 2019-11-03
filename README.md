@@ -18,7 +18,6 @@ Once building is complete, run your project with: `docker-compose up`.
 
 - Frontend will be available at `frontend.localhost`
 - Backend will be available at `backend.localhost`
-- Database will be available at `db.localhost`
 
 Both the backend and frontend folders are linked to their respective containers
 so you can start coding directly from the host.

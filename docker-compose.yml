@@ -17,8 +17,6 @@ services:
     image: postgres
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
-    labels:
-      - traefik.http.routers.db.rule=Host(`db.localhost`)
   backend:
     build: backend
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
