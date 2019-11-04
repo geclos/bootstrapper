@@ -3,6 +3,8 @@ gem 'rails', '~>6'
 gem 'pg', '1.1.4'
 gem 'rss', '0.2.8'
 gem 'rack-cors', '1.0.3'
+gem 'devise', '4.7.1'
+gem 'turbolinks', '5.2.0'
 
 group :test do
   gem 'rspec'

@@ -65,4 +65,9 @@ Rails.application.configure do
       resource '*', headers: :any, methods: %i[get post options]
     end
   end
+
+  config.action_mailer.default_url_options = { host: 'backend.localhost' }
+
+  # Log to stdout for docker
+  config.logger = Logger.new('/proc/1/fd/1')
 end
