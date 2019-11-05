@@ -8,33 +8,57 @@ import styles from './index.module.css'
 
 const cx = cn.bind(styles)
 
-function Article({
+const _onClick = ({ collapsed, onClick }) => {
+  if (collapsed) return onClick
+  return null
+}
+
+const _Title = ({ collapsed, title, link }) => {
+  const component = <Title size={collapsed ? 'xl' : '2xl'}>{title}</Title>
+
+  if (collapsed) return component
+
+  return (
+    <a href={link} target='_blank'>{component}</a>
+  )
+}
+
+const _Subtitle = ({ collapsed, subtitle }) => {
+  if (collapsed) return null
+
+  return <div className={styles.subtitle}><Subtitle>{subtitle}</Subtitle></div>
+}
+
+const _Collapser = ({ collapsed, onClick }) => {
+  if (collapsed) return null
+
+  return <div className={styles.collapser} onClick={onClick} />
+}
+
+const Article = ({
   title,
   subtitle,
   body,
+  link,
   excerpt,
   onClick,
   collapsed = true
-}) {
-  const _onClick = () => {
-    if (collapsed) return onClick
-    return null
-  }
-
+}) => {
   return (
     <div
       className={cx('article', { collapsed })}
-      onClick={_onClick()}
+      onClick={_onClick({ collapsed, onClick })}
     >
       <div className={styles.header}>
         <Header>
-          <Title size={collapsed ? 'xl' : '2xl'}>{title}</Title>
-          {!collapsed && <div className={styles.subtitle}><Subtitle>{subtitle}</Subtitle></div>}
+          <_Collapser collapsed={collapsed} onClick={onClick} />
+          <_Title link={link} collapsed={collapsed} title={title} />
+          <_Subtitle collapsed={collapsed} subtitle={subtitle} />
         </Header>
       </div>
-      <div dangerouslySetInnerHTML={{__html: collapsed ? (excerpt.slice(0, 100) + '...') : body }} />
+      <div className={styles.body} dangerouslySetInnerHTML={{__html: collapsed ? (excerpt.slice(0, 100) + '...') : body }} />
     </div>
   );
 }
 
-export default Article;
+export default Article

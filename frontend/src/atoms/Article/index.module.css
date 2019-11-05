@@ -34,3 +34,27 @@
   @apply mt-2;
 }
 
+.article .body p {
+  @apply mb-4;
+
+  line-height: 1.75;
+}
+
+.article .body blockquote {
+  @apply pl-4;
+  @apply my-4;
+
+  color: theme(colors.gray.600);
+  border-left: 5px solid theme(colors.gray.300);
+}
+
+.article .header body {
+  text-decoration: underline;
+  color: theme(colors.blue.400);
+}
+
+.collapser {
+  height: 1em;
+  width: 100%;
+  cursor: pointer;
+}

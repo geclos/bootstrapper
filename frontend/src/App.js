@@ -4,25 +4,40 @@ import axios from 'axios'
 
 import './App.css'
 
-function App() {
-  const [isFetching, setFetching] = useState(false)
+const useData = () => {
   const [articles, setArticles] = useState([])
-  const [selected, setSelected] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
-      setFetching(true)
-
       const { data } = await axios.get('http://backend.localhost/posts')
-
-      setFetching(false)
       setArticles(data)
     }
 
     fetchData()
   }, [])
 
-  console.log(selected)
+  return [articles]
+}
+
+const useSelectedList = (initState) => {
+  const [selected, setSelected] = useState(initState)
+
+  const toggleSelected = (elm) => {
+    let arr = new Array(selected)
+    const i = selected.indexOf(elm)
+
+    if (i > -1) arr.splice(i, 1)
+    else arr.push(elm)
+
+    setSelected(arr)
+  }
+
+  return [selected, toggleSelected]
+}
+
+function App() {
+  const [selected, toggleSelected] = useSelectedList([])
+  const [articles] = useData()
 
   return (
     <div className='container my-12 mx-auto'>
@@ -32,7 +47,8 @@ function App() {
           body={article.content}
           collapsed={!selected.includes(article.id)}
           excerpt={article.description}
-          onClick={() => setSelected(selected.concat([article.id]))}
+          link={article.link}
+          onClick={() => toggleSelected(article.id)}
           subtitle={article.pub_date}
           title={article.title}
         />
