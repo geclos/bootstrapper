@@ -1,6 +1,7 @@
 import Article from 'atoms/Article'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { format } from 'date-fns'
 
 import './App.css'
 
@@ -49,7 +50,7 @@ function App() {
           excerpt={article.description}
           link={article.link}
           onClick={() => toggleSelected(article.id)}
-          subtitle={article.pub_date}
+          subtitle={format(new Date(article.pub_date), 'yyyy-MM-dd HH:mm')}
           title={article.title}
         />
       ))}

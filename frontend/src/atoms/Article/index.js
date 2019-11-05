@@ -19,7 +19,7 @@ const _Title = ({ collapsed, title, link }) => {
   if (collapsed) return component
 
   return (
-    <a href={link} target='_blank'>{component}</a>
+    <a href={link} rel='noopener noreferrer' target='_blank'>{component}</a>
   )
 }
 
@@ -32,7 +32,11 @@ const _Subtitle = ({ collapsed, subtitle }) => {
 const _Collapser = ({ collapsed, onClick }) => {
   if (collapsed) return null
 
-  return <div className={styles.collapser} onClick={onClick} />
+  return (
+    <div className={styles.collapser} onClick={onClick}>
+      collapse -
+    </div>
+  )
 }
 
 const Article = ({
