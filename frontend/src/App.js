@@ -7,7 +7,7 @@ import './App.css'
 function App() {
   const [isFetching, setFetching] = useState(false)
   const [articles, setArticles] = useState([])
-  const [selected, setSelected] = useState(0)
+  const [selected, setSelected] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,13 +26,13 @@ function App() {
 
   return (
     <div className='container my-12 mx-auto'>
-      {articles.map((article, i) => (
+      {articles.map(article => (
         <Article
           key={article.id}
           body={article.content}
-          collapsed={selected !== i}
+          collapsed={!selected.includes(article.id)}
           excerpt={article.description}
-          onClick={() => setSelected(i)}
+          onClick={() => setSelected(selected.concat([article.id]))}
           subtitle={article.pub_date}
           title={article.title}
         />

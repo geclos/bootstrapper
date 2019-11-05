@@ -16,10 +16,15 @@ function Article({
   onClick,
   collapsed = true
 }) {
+  const _onClick = () => {
+    if (collapsed) return onClick
+    return null
+  }
+
   return (
     <div
       className={cx('article', { collapsed })}
-      onClick={onClick}
+      onClick={_onClick()}
     >
       <div className={styles.header}>
         <Header>
