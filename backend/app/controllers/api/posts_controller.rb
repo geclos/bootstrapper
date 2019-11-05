@@ -12,8 +12,8 @@ module Api
           {
             id: i,
             title: item.title,
-            content: item.content_encoded,
-            description: item.description,
+            content: ActionController::Base.helpers.sanitize(item.content_encoded),
+            description: ActionController::Base.helpers.sanitize(item.description),
             link: item.link,
             pub_date: item.pubDate
           }
