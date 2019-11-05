@@ -23,7 +23,7 @@ const useSelectedList = (initState) => {
   const [selected, setSelected] = useState(initState)
 
   const toggleSelected = (elm) => {
-    let arr = new Array(selected)
+    let arr = [...selected]
     const i = selected.indexOf(elm)
 
     if (i > -1) arr.splice(i, 1)
@@ -36,8 +36,8 @@ const useSelectedList = (initState) => {
 }
 
 function App() {
-  const [selected, toggleSelected] = useSelectedList([])
   const [articles] = useData()
+  const [selected, toggleSelected] = useSelectedList([])
 
   return (
     <div className='container my-12 mx-auto'>
