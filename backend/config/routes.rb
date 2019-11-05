@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     root to: 'home#index'
   end
 
-  scope module: 'public' do
+  scope module: 'api' do
     resources :posts
   end
 end
