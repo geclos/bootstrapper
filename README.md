@@ -26,10 +26,14 @@ Once you are done, you can simply close everything via the `docker-compose down`
 command.
 
 ### Dependencies
-A small caveat: your projets are run within docker containers so dependencies
+A small caveat: your projets are run within Docker containers so dependencies
 should not be installed from the host unless you want to end up with a nice
-mess. The easiest ways to install a new dependency are:
-- Modify your Gemfile of package.json files and rebuild the images with `docker-compose build`
-- Install at runtime with `docker-compose run <frontend|backend> <YOUR_DEPENDENCY_INSTALLATION_COMMAND>`
+mess. The easiest way to install a new dependency is to add it to your
+package.json or Gemfile and then rebuild the Docker container.
+
+### Running Rails/Rake commands
+Most Rails/Rake commands should be run from inside the container. You can do
+this at runtime with the `run` command, as such:
+`docker-compose run backend <YOUR_COMMAND>`
 
 Happy coding!
